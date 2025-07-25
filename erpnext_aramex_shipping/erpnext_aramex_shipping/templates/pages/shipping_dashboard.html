@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+#test
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aramex Shipping Dashboard - ERPNext</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/erpnext_aramex_shipping/css/shipping_dashboard.css">
+</head>
+<body>
+    <div class="shipping-container">
+        <!-- Header -->
+        <header class="shipping-header">
+            <div class="header-content">
+                <h1 class="header-title">Aramex Shipping Dashboard</h1>
+                <p class="header-subtitle">Manage your shipments with ease</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="shipping-main">
+            <!-- Alert Messages -->
+            <div id="alert-container" class="alert-container"></div>
+
+            <!-- Shipping Form -->
+            <section class="shipping-form-section">
+                <div class="form-card">
+                    <h2 class="form-title">Create New Shipment</h2>
+                    
+                    <form id="shipping-form" class="shipping-form">
+                        <!-- Shipper Information -->
+                        <div class="form-group-section">
+                            <h3 class="section-title">Shipper Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="shipper_name" class="form-label">Full Name *</label>
+                                    <input type="text" id="shipper_name" name="shipper_name" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="shipper_company" class="form-label">Company</label>
+                                    <input type="text" id="shipper_company" name="shipper_company" class="form-input">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="shipper_email" class="form-label">Email *</label>
+                                    <input type="email" id="shipper_email" name="shipper_email" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="shipper_phone" class="form-label">Phone *</label>
+                                    <input type="tel" id="shipper_phone" name="shipper_phone" class="form-input" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="shipper_address_line1" class="form-label">Address Line 1 *</label>
+                                <input type="text" id="shipper_address_line1" name="shipper_address_line1" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="shipper_address_line2" class="form-label">Address Line 2</label>
+                                <input type="text" id="shipper_address_line2" name="shipper_address_line2" class="form-input">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="shipper_city" class="form-label">City *</label>
+                                    <input type="text" id="shipper_city" name="shipper_city" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="shipper_state" class="form-label">State/Province</label>
+                                    <input type="text" id="shipper_state" name="shipper_state" class="form-input">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="shipper_postal_code" class="form-label">Postal Code</label>
+                                    <input type="text" id="shipper_postal_code" name="shipper_postal_code" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="shipper_country_code" class="form-label">Country *</label>
+                                    <select id="shipper_country_code" name="shipper_country_code" class="form-select" required>
+                                        <option value="">Select Country</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Consignee Information -->
+                        <div class="form-group-section">
+                            <h3 class="section-title">Consignee Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="consignee_name" class="form-label">Full Name *</label>
+                                    <input type="text" id="consignee_name" name="consignee_name" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="consignee_company" class="form-label">Company</label>
+                                    <input type="text" id="consignee_company" name="consignee_company" class="form-input">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="consignee_email" class="form-label">Email *</label>
+                                    <input type="email" id="consignee_email" name="consignee_email" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="consignee_phone" class="form-label">Phone *</label>
+                                    <input type="tel" id="consignee_phone" name="consignee_phone" class="form-input" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="consignee_address_line1" class="form-label">Address Line 1 *</label>
+                                <input type="text" id="consignee_address_line1" name="consignee_address_line1" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="consignee_address_line2" class="form-label">Address Line 2</label>
+                                <input type="text" id="consignee_address_line2" name="consignee_address_line2" class="form-input">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="consignee_city" class="form-label">City *</label>
+                                    <input type="text" id="consignee_city" name="consignee_city" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="consignee_state" class="form-label">State/Province</label>
+                                    <input type="text" id="consignee_state" name="consignee_state" class="form-input">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="consignee_postal_code" class="form-label">Postal Code</label>
+                                    <input type="text" id="consignee_postal_code" name="consignee_postal_code" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="consignee_country_code" class="form-label">Country *</label>
+                                    <select id="consignee_country_code" name="consignee_country_code" class="form-select" required>
+                                        <option value="">Select Country</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Package Information -->
+                        <div class="form-group-section">
+                            <h3 class="section-title">Package Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="weight" class="form-label">Weight *</label>
+                                    <input type="number" id="weight" name="weight" class="form-input" step="0.1" min="0.1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="weight_unit" class="form-label">Weight Unit</label>
+                                    <select id="weight_unit" name="weight_unit" class="form-select">
+                                        <option value="KG">Kilograms</option>
+                                        <option value="LB">Pounds</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="length" class="form-label">Length *</label>
+                                    <input type="number" id="length" name="length" class="form-input" step="0.1" min="0.1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="width" class="form-label">Width *</label>
+                                    <input type="number" id="width" name="width" class="form-input" step="0.1" min="0.1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="height" class="form-label">Height *</label>
+                                    <input type="number" id="height" name="height" class="form-input" step="0.1" min="0.1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dimension_unit" class="form-label">Dimension Unit</label>
+                                    <select id="dimension_unit" name="dimension_unit" class="form-select">
+                                        <option value="CM">Centimeters</option>
+                                        <option value="IN">Inches</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="number_of_pieces" class="form-label">Number of Pieces *</label>
+                                    <input type="number" id="number_of_pieces" name="number_of_pieces" class="form-input" min="1" value="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="currency_code" class="form-label">Currency</label>
+                                    <select id="currency_code" name="currency_code" class="form-select">
+                                        <option value="AED">UAE Dirham</option>
+                                        <option value="USD">US Dollar</option>
+                                        <option value="EUR">Euro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="description" class="form-label">Package Description *</label>
+                                <textarea id="description" name="description" class="form-textarea" rows="3" required placeholder="Describe the contents of the package"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="form-actions">
+                            <button type="button" id="fetch-rates-btn" class="btn btn-secondary">
+                                <span class="btn-text">Fetch Shipping Rates</span>
+                                <span class="btn-loader" style="display: none;">Loading...</span>
+                            </button>
+                            <button type="button" id="create-shipment-btn" class="btn btn-primary" disabled>
+                                <span class="btn-text">Create Shipment</span>
+                                <span class="btn-loader" style="display: none;">Creating...</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Shipping Rates Section -->
+            <section class="rates-section" id="rates-section" style="display: none;">
+                <div class="rates-card">
+                    <h2 class="rates-title">Available Shipping Rates</h2>
+                    <div id="rates-container" class="rates-container">
+                        <!-- Rates will be populated here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shipment Result Section -->
+            <section class="result-section" id="result-section" style="display: none;">
+                <div class="result-card">
+                    <h2 class="result-title">Shipment Created Successfully</h2>
+                    <div id="result-container" class="result-container">
+                        <!-- Result will be populated here -->
+                    </div>
+                    <div class="result-actions">
+                        <button type="button" id="print-label-btn" class="btn btn-secondary">
+                            <span class="btn-text">Print Shipping Label</span>
+                            <span class="btn-loader" style="display: none;">Loading...</span>
+                        </button>
+                        <button type="button" id="track-shipment-btn" class="btn btn-secondary">
+                            <span class="btn-text">Track Shipment</span>
+                            <span class="btn-loader" style="display: none;">Loading...</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tracking Section -->
+            <section class="tracking-section">
+                <div class="tracking-card">
+                    <h2 class="tracking-title">Track Shipment</h2>
+                    <div class="tracking-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tracking-number" class="form-label">Shipment ID or Tracking Number</label>
+                                <input type="text" id="tracking-number" class="form-input" placeholder="Enter shipment ID or tracking number">
+                            </div>
+                            <button type="button" id="track-btn" class="btn btn-secondary">
+                                <span class="btn-text">Track</span>
+                                <span class="btn-loader" style="display: none;">Tracking...</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="tracking-results" class="tracking-results" style="display: none;">
+                        <!-- Tracking results will be populated here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shipment History Section -->
+            <section class="history-section">
+                <div class="history-card">
+                    <h2 class="history-title">Recent Shipments</h2>
+                    <div id="history-container" class="history-container">
+                        <!-- History will be populated here -->
+                    </div>
+                    <button type="button" id="refresh-history-btn" class="btn btn-secondary">
+                        <span class="btn-text">Refresh History</span>
+                        <span class="btn-loader" style="display: none;">Loading...</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="shipping-footer">
+            <div class="footer-content">
+                <p>&copy; 2024 ERPNext Aramex Shipping Integration. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/assets/erpnext_aramex_shipping/js/shipping_dashboard.js"></script>
+</body>
+</html>
